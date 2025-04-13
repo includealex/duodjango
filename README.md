@@ -15,7 +15,7 @@ python3 -m pip install -r requirements.txt
 
 ```bash
 cd mysite
-python3 manage.py runserver
+python3 manage.py runserver --insecure
 ```
 
 Перейти на локальный сервер можно путём введения `http://127.0.0.1:8000/` в адресную строку браузера.
