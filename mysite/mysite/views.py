@@ -9,6 +9,10 @@ def get_analogues(request):
     analogues = analogues_manager.get_current_analogues()
     return render(request, "analogues.html", context={"analogues": analogues})
 
+def get_statistics(request):
+    stats = analogues_manager.get_stats()
+    return render(request, "statistics.html", context={"statistics": stats})
+
 def add_analogue(request):
     return render(request, "add_analogue.html")
 

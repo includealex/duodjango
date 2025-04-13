@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.index),
     path('analogues.html', views.get_analogues),
     path('add_analogue.html', views.add_analogue),
-    path('send_analogue.html', views.send_analogue)
+    path('send_analogue.html', views.send_analogue),
+    path('statistics.html', views.get_statistics),
 ]
