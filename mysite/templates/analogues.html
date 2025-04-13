@@ -1,0 +1,30 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Список древнерусских аналогов.
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="analogues-table">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">#</th>
+              <th scope="col" class="py-3">Русское слово</th>
+              <th scope="col" class="py-3">Древнерусский аналог</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for idx, value in analogues.items %}
+            <tr>
+              <td class="py-3">{{ idx }}</td>
+              <td class="py-3">{{ value.russian }}</td>
+              <td class="py-3">{{ value.oldrussian }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+{% endblock %}
