@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block pagetitle %}{% endblock %}</title>
-    <!-- load static -->
     {% load static %}
-    <!-- CSS -->
     <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        #title-box {
+            background: linear-gradient(to bottom, white 33.3%, #0033a0 33.3%, #0033a0 66.6%, #d52b1e 66.6%);
+            color: white;
+        }
+
+        #title-box h1,
+        #title-box p {
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0;
+            text-shadow: 
+                -1px -1px 0 black,  
+                 1px -1px 0 black,
+                -1px  1px 0 black,
+                 1px  1px 0 black;
+        }
+
+        footer.footer {
+            background-color: #d52b1e;
+            color: white;
+        }
+
+        .table thead th {
+            background-color: #0033a0;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <main>
@@ -26,7 +52,7 @@
             </div>
         </div>
         {% block content %}{% endblock %}
-        <footer class="footer pt-3 mt-4 text-muted border-top">© 2025</footer>
+        <footer class="footer pt-3 mt-4 text-muted border-top text-center">© 2025</footer>
     </div>
 </main>
 </body>
