@@ -16,6 +16,22 @@ def get_statistics(request):
 def add_analogue(request):
     return render(request, "add_analogue.html")
 
+def get_exact_statistics(request):
+    return render(request, "exact_statistics.html")
+
+def get_name_stats(request):
+    cache.clear()
+
+    cur_name = request.POST.get("name")
+    context = {}
+    context["username"] = cur_name
+    cur_stats = analogues_manager.get_stats_by_name(cur_name)
+    context["stats"] = cur_stats
+    cur_len = len(cur_stats)
+    context["n_words"] = cur_len
+
+    return render(request, "exact_statistics_request.html", context)
+
 def send_analogue(request):
     cache.clear()
     if request.method != "POST":

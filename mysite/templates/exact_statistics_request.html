@@ -1,0 +1,36 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Пользовательская статистика.
+{% endblock %}
+
+{% block page-lead %}{% endblock %}
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="analogue-form-result">
+    <h2 class="pb-2 border-bottom">Статистика для пользователяь <span class="fst-italic">{{ username }}:</h2>
+    <p> Количество введённых слов: {{ n_words }}</p>
+</div>
+
+<div class="table-responsive px-5 py-5" id="top-users-table"">
+    <div>
+      <h3 class="py-2">Введённые слова:</h3>
+    </div>
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col" class="py-3">Русское слово</th>
+          <th scope="col" class="py-3">Древнерусский аналог</th>
+        </tr>
+      </thead>
+        <tbody>
+            {% for idx, value in stats.items %}
+            <tr>
+                <td class="py-3">{{ value.russian }}</td>
+                <td class="py-3">{{ value.oldrussian }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

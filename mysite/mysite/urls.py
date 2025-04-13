@@ -24,4 +24,6 @@ urlpatterns = [
     path('add_analogue.html', views.add_analogue),
     path('send_analogue.html', views.send_analogue),
     path('statistics.html', views.get_statistics),
+    path('exact_statistics.html', views.get_exact_statistics),
+    path('get_name_stats.html', views.get_name_stats)
 ]

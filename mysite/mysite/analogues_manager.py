@@ -1,5 +1,6 @@
 import pandas as pd
 
+from collections import defaultdict
 from pathlib import Path
 
 DB_FILE = Path("data/analogues.csv")
@@ -29,3 +30,11 @@ def add_analogue(new_russian_word, new_oldrussian_word, username):
     tmp_str = f"{new_russian_word},{new_oldrussian_word},{username}"
     with open(DB_FILE, 'a') as ifile:
         ifile.write(f"\n{tmp_str}")
+
+def get_stats_by_name(username):
+    df = pd.read_csv(DB_FILE)
+
+    df = (df[df["adder"] == username].drop(["adder"], axis=1)).reset_index(drop=True)
+    user_analogues = df.to_dict(orient='index')
+
+    return user_analogues
