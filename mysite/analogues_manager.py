@@ -1,17 +1,29 @@
+"""Module providing a functionality working with analogues .csv file"""
+
+from pathlib import Path
+
 import pandas as pd
 
-from collections import defaultdict
-from pathlib import Path
 
 DB_FILE = Path("data/analogues.csv")
 
 def get_current_analogues():
+    """
+        Returns current database as dictionary.
+    """
+
     analogues_df = pd.read_csv(DB_FILE)
     analogues = analogues_df.to_dict(orient='index')
 
     return analogues
 
 def get_stats():
+    """
+        Returns current database as statistics dictionary,
+        splitting added by user content with non-added
+        content by user.
+    """
+
     df = pd.read_csv(DB_FILE)
     user_word_count = df[df['adder'] != 'base']['adder'].value_counts()
     top_users = user_word_count.nlargest(3).to_dict()
@@ -27,11 +39,19 @@ def get_stats():
     return stats
 
 def add_analogue(new_russian_word, new_oldrussian_word, username):
+    """
+        User-addition of oldrussian analogue.
+    """
+
     tmp_str = f"{new_russian_word},{new_oldrussian_word},{username}"
-    with open(DB_FILE, 'a') as ifile:
+    with open(DB_FILE, 'a', encoding='utf-8') as ifile:
         ifile.write(f"\n{tmp_str}")
 
 def get_stats_by_name(username):
+    """
+        Gives statistics for specified user.
+    """
+
     df = pd.read_csv(DB_FILE)
 
     df = (df[df["adder"] == username].drop(["adder"], axis=1)).reset_index(drop=True)

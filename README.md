@@ -14,7 +14,6 @@ python3 -m pip install -r requirements.txt
 После установки зависимостей:
 
 ```bash
-cd mysite
 python3 manage.py runserver --insecure
 ```
 
